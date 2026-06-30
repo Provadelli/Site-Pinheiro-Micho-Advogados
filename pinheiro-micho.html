@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinheiro & Micho | Advocacia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" sizes="192x192" href="minilogo.jpg" type="image/jpeg"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --gold: #C9A84C;
+    --gold-light: #E8CC84;
+    --cream: #F8F6F1;
+    --warm-white: #FDFCFA;
+    --gray: #6B7280;
+    --gray-light: #D1D5DB;
+    --navy-mid: #1a2e45;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-white);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 5%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  header.scrolled {
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(201,168,76,0.2);
+  }
+  header.at-top {
+    background: transparent;
+  }
+
+  .logo-wrap img {
+    height: 8rem;
+    width: 8rem;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  nav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.82);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  nav a:hover { color: var(--gold); }
+  nav a:hover::after { width: 100%; }
+
+  .nav-cta {
+    border: 1px solid var(--gold) !important;
+    padding: 0.45rem 1.1rem !important;
+    color: var(--gold) !important;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle grid texture */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0; 
+    background:
+        linear-gradient(rgba(0,0,1,.65), rgba(0,0,1,.65)),
+        url("fundo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+  }
+
+  /* animated gold signature line */
+  .signature-line {
+    position: absolute;
+    bottom: 38%;
+    left: 0; right: 0;
+    height: 1px;
+    overflow: hidden;
+  }
+  .signature-line span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: swipe 3.5s ease-in-out infinite;
+    width: 40%;
+  }
+  @keyframes swipe {
+    0%   { transform: translateX(-100%); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateX(350%); opacity: 0; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+  }
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--cream);
+    margin-bottom: 2rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(248,246,241,0.6);
+    max-width: 520px;
+    margin-bottom: 3rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-primary svg { width: 14px; height: 14px; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid rgba(248,246,241,0.25);
+    color: var(--cream);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    border-radius: 2px;
+    margin-left: 1rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute;
+    right: 5%;
+    bottom: 12%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    z-index: 1;
+  }
+  .stat {
+    text-align: right;
+    border-right: 1px solid var(--gold);
+    padding-right: 1.2rem;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.45);
+    margin-top: 0.3rem;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 5%; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--navy);
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* ── FILOSOFIA ── */
+  .filosofia {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .filosofia-text p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--gray);
+    margin-top: 1.8rem;
+  }
+  .filosofia-quote {
+    position: relative;
+    padding: 3rem;
+    background: var(--navy);
+    border-radius: 2px;
+  }
+  .filosofia-quote::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    line-height: 0.6;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+  }
+  .filosofia-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--cream);
+    position: relative;
+    z-index: 1;
+  }
+  .filosofia-quote cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ── ATUAÇÃO ── */
+  .atuacao { background: var(--warm-white); }
+  .atuacao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--gray-light);
+    border: 1.5px solid var(--gray-light);
+  }
+  .area-card {
+    background: var(--warm-white);
+    padding: 2.5rem;
+    transition: background 0.3s, transform 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .area-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .area-card:hover { background: var(--navy); }
+  .area-card:hover .area-num { color: rgba(201,168,76,0.3); }
+  .area-card:hover .area-title { color: var(--cream); }
+  .area-card:hover .area-desc { color: rgba(248,246,241,0.55); }
+  .area-card:hover::after { width: 100%; }
+
+  .area-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gray-light);
+    margin-bottom: 1.2rem;
+    transition: color 0.3s;
+  }
+  .area-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.2rem;
+    color: var(--gold);
+  }
+  .area-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+    transition: color 0.3s;
+  }
+  .area-desc {
+    font-size: 0.83rem;
+    line-height: 1.7;
+    color: var(--gray);
+    transition: color 0.3s;
+  }
+
+  /* ── PREVIDENCIÁRIO DESTAQUE ── */
+  .previdenciario {
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .prev-text h2 { color: var(--cream); }
+  .prev-text p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: rgba(248,246,241,0.6);
+    margin-top: 1.5rem;
+  }
+  .prev-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: rgba(201,168,76,0.15);
+    border: 1.5px solid rgba(201,168,76,0.15);
+  }
+  .prev-item {
+    background: var(--navy-mid);
+    padding: 2rem;
+  }
+  .prev-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .prev-item-desc {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: rgba(248,246,241,0.5);
+  }
+
+  /* ── ADVOGADOS ── */
+  .advogados { background: var(--cream); }
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+  .adv-card {
+    background: var(--warm-white);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .adv-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(13,27,42,0.1);
+  }
+  .adv-photo {
+    height: 220px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .adv-photo-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.2);
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+  }
+  .adv-info { padding: 1.5rem; }
+  .adv-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .adv-oab {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .adv-spec {
+    font-size: 0.8rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  /* ── ESTRUTURA ── */
+  .estrutura {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .estrutura-img {
+    background: var(--navy);
+    height: 460px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .estrutura-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(transparent, rgba(201,168,76,0.1));
+  }
+  .estrutura-img img {
+    width: 700px;
+    height: 500px;
+    color: rgba(201,168,76,0.2);
+  }
+  .estrutura-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  .estrutura-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+  .estrutura-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+  }
+  .estrutura-icon svg { width: 16px; height: 16px; }
+  .estrutura-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .estrutura-item-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--gray);
+  }
+
+  /* ── NOTÍCIAS ── */
+  .noticias { background: var(--cream); }
+  .noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+  .noticia-card {
+    background: var(--warm-white);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .noticia-card:hover { transform: translateY(-3px); }
+  .noticia-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.25rem 0.6rem;
+    border-radius: 1px;
+    margin-bottom: 1rem;
+  }
+  .noticia-body { padding: 1.8rem; }
+  .noticia-bar {
+    height: 3px;
+    background: var(--navy);
+    border-bottom: 2px solid var(--gold);
+  }
+  .noticia-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+  }
+  .noticia-excerpt {
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin-bottom: 1.2rem;
+  }
+  .noticia-date {
+    font-size: 0.68rem;
+    color: var(--gray-light);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── CONTATO ── */
+  .contato {
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .contato-text h2 { color: var(--cream); margin-bottom: 1.5rem; }
+  .contato-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .contato-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .contato-icon {
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+  .contato-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .contato-val {
+    font-size: 0.88rem;
+    color: rgba(248,246,241,0.75);
+    line-height: 1.6;
+  }
+
+  /* Form */
+  .contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.5);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: rgba(248,246,241,0.06);
+    border: 1px solid rgba(248,246,241,0.12);
+    border-radius: 2px;
+    padding: 0.85rem 1rem;
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-group select option { background: var(--navy); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #070f18;
+    padding: 3rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-logo img {
+   
+    opacity: 0.5;
+    height: 8rem;
+   
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .footer-links a {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(248,246,241,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(248,246,241,0.25);
+  }
+
+  /* ── SOCIAL BAR ── */
+  .social-bar {
+    position: fixed;
+    left: 2rem;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 50;
+  }
+  .social-bar a {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    opacity: 0.7;
+  }
+  .social-bar a:hover { background: rgba(201,168,76,0.1); opacity: 1; }
+  .social-bar a svg { width: 14px; height: 14px; }
+
+  /* ── MOBILE ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 22px;
+    height: 1px;
+    background: var(--cream);
+    display: block;
+    transition: 0.3s;
+  }
+
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .hamburger { display: flex; }
+    .hero-stats { display: none; }
+    .filosofia, .previdenciario, .estrutura, .contato {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .form-row { grid-template-columns: 1fr; }
+    .social-bar { display: none; }
+    h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  }
+
+  /* scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="at-top" id="site-header">
+  <a href="#inicio" class="logo-wrap">
+    <img src="logopm.png" alt="Pinheiro &amp; Micho">
+  </a>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#nossa-historia">Nossa História</a>
+    <a href="#estrutura">Estrutura</a>
+    <a href="#atuacao">Áreas de Atuação</a>
+    <a href="#previdenciario">Previdenciário</a>
+    <a href="#advogados">Advogados</a>
+    <a href="#noticias">Notícias & Artigos</a>
+    <a href="#contato" class="nav-cta">Contato</a>
+  </nav>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- SOCIAL -->
+<div class="social-bar">
+  <a href="http://www.facebook.com/pinheiromicho" aria-label="Facebook">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  </a>
+  <a href="https://twitter.com/pinheiromicho" aria-label="Twitter / X">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  </a>
+  <a href="https://instagram.com/pinheiromichoadv" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="signature-line"><span></span></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Advocacia de referência desde 2010</div>
+    <h1>Seu direito levado <em> a sério </em></h1>
+    <p class="hero-sub">O escritório Pinheiro &amp; Micho alia expertise técnica e atenção personalizada para proteger seus direitos e interesses com excelência.</p>
+    <div>
+      <a href="#contato" class="btn-primary">
+        Fale conosco
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#atuacao" class="btn-ghost">Nossas áreas</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">+15</div>
+      <div class="stat-label">Anos de experiência</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Áreas de atuação</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">RJ</div>
+      <div class="stat-label">Nova Iguaçu</div>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFIA -->
+<section class="filosofia reveal" id="nossa-historia">
+  <div class="filosofia-text">
+    <div class="section-label">Nossa história</div>
+    <h2>Uma <em>filosofia</em> que norteia cada caso</h2>
+    <p>Fundado com o propósito de oferecer assessoria jurídica de alto nível às pessoas e empresas da Baixada Fluminense, o escritório Pinheiro &amp; Micho consolidou-se como referência regional no atendimento individualizado e na busca por soluções criativas e eficazes.</p>
+    <p>Nossa missão é fornecer a nossos clientes a melhor e mais atualizada informação jurídica, tratando individualmente cada caso e auxiliando nas tomadas de decisões importantes.</p>
+  </div>
+  <div class="filosofia-quote">
+    <blockquote>
+      Cada processo carrega uma história. Nossa obrigação é contá-la com excelência perante a justiça.
+    </blockquote>
+    <cite>— Pinheiro &amp; Micho Advocacia</cite>
+  </div>
+</section>
+
+<!-- ESTRUTURA -->
+<section class="estrutura reveal" id="estrutura">
+  <div class="estrutura-img">
+   <img src="estrutura.png">
+  </div>
+  <div>
+    <div class="section-label">Nossa estrutura</div>
+    <h2>Infraestrutura pensada para o <em>seu atendimento</em></h2>
+    <div class="estrutura-items">
+      <div class="estrutura-item">
+        <div class="estrutura-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div class="estrutura-item-title">Sede própria no Centro de Nova Iguaçu</div>
+          <div class="estrutura-item-desc">Localizada na Rua Otávio Tarquino, 410 — Sala 511, de fácil acesso a toda a região.</div>
+        </div>
+      </div>
+      <div class="estrutura-item">
+        <div class="estrutura-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <div class="estrutura-item-title">Tecnologia e pesquisa jurídica</div>
+          <div class="estrutura-item-desc">Ferramentas digitais de ponta para monitoramento de processos e acesso à jurisprudência atualizada.</div>
+        </div>
+      </div>
+      <div class="estrutura-item">
+        <div class="estrutura-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="estrutura-item-title">Equipe multidisciplinar</div>
+          <div class="estrutura-item-desc">Advogados especializados em diferentes ramos do Direito para atender todas as suas demandas.</div>
+        </div>
+      </div>
+      <div class="estrutura-item">
+        <div class="estrutura-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 5.97 5.97l.52-.52a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="estrutura-item-title">Atendimento presencial e remoto</div>
+          <div class="estrutura-item-desc">Consultas agendadas no escritório ou por videoconferência, respeitando a sua disponibilidade.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÁREAS DE ATUAÇÃO -->
+<section class="atuacao reveal" id="atuacao">
+  <div class="atuacao-header">
+    <div>
+      <div class="section-label">Expertise</div>
+      <h2>Áreas de <em>atuação</em></h2>
+    </div>
+    <a href="#contato" class="btn-primary">
+      Consultar advogado
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="areas-grid">
+    <div class="area-card">
+      <div class="area-num">01</div>
+      <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 10v11M16 10v11M12 10v11"/></svg>
+      <div class="area-title">Direito Empresarial</div>
+      <div class="area-desc">Assessoria a pessoas jurídicas em contratos, societário, recuperação judicial e dissolução de empresas.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">02</div>
+      <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="area-title">Civil e Consumidor</div>
+      <div class="area-desc">Defesa dos direitos do consumidor, responsabilidade civil, contratos e indenizações em geral.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">03</div>
+      <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <div class="area-title">Direito Tributário</div>
+      <div class="area-desc">Planejamento tributário, defesas administrativas e judiciais, parcelamentos e recuperação de créditos fiscais.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">04</div>
+      <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <div class="area-title">Família e Sucessões</div>
+      <div class="area-desc">Divórcio, guarda de filhos, pensão alimentícia, inventários, testamentos e planejamento sucessório.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">05</div>
+      <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 1 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+      <div class="area-title">Direito Previdenciário</div>
+      <div class="area-desc">Aposentadorias, BPC, pensão por morte, auxílio-doença e revisões de benefícios junto ao INSS.</div>
+    </div>
+    <div class="area-card">
+      <div class="area-num">06</div>
+      <svg class="area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <div class="area-title">Trabalhista</div>
+      <div class="area-desc">Defesa de trabalhadores e empregadores em rescisões, horas extras, assédio e negociações coletivas.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIDENCIÁRIO DESTAQUE -->
+<section class="previdenciario reveal" id="previdenciario">
+  <div class="prev-text">
+    <div class="section-label" style="color:var(--gold-light);">Especialidade P&amp;M</div>
+    <h2>Previdenciário: <em>seu futuro</em> em mãos experientes</h2>
+    <p>O Direito Previdenciário é uma das nossas maiores especialidades. Atuamos em todas as etapas administrativas e judiciais para garantir que você receba o benefício que merece do INSS, com agilidade e segurança.</p>
+    <a href="#contato" class="btn-primary" style="margin-top:2rem; display:inline-flex;">
+      Consulta previdenciária
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="prev-visual">
+    <div class="prev-item">
+      <div class="prev-item-title">Aposentadorias</div>
+      <div class="prev-item-desc">Por idade, tempo de contribuição, invalidez e especial — analisamos o melhor cenário para você.</div>
+    </div>
+    <div class="prev-item">
+      <div class="prev-item-title">Pensão por Morte</div>
+      <div class="prev-item-desc">Orientação completa aos dependentes sobre direitos e requerimento do benefício.</div>
+    </div>
+    <div class="prev-item">
+      <div class="prev-item-title">Auxílio-Doença e BPC</div>
+      <div class="prev-item-desc">Recursos administrativos e ações judiciais contra negativas indevidas do INSS.</div>
+    </div>
+    <div class="prev-item">
+      <div class="prev-item-title">Revisão de Benefícios</div>
+      <div class="prev-item-desc">Identificamos erros de cálculo e garantimos a correção dos valores pagos retroativamente.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVOGADOS -->
+<section class="advogados reveal" id="advogados">
+  <div class="section-label">Nosso time</div>
+  <h2>Os <em>advogados</em> que cuidam do seu caso</h2>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <div class="adv-photo">
+        <div class="adv-photo-placeholder">R</div>
+      </div>
+      <div class="adv-info">
+        <div class="adv-name">Dr. Rafael Pinheiro</div>
+        <div class="adv-oab">OAB/RJ &middot; Sócio-Fundador</div>
+        <div class="adv-spec">Nascido em Nova Iguaçu, filho do Professor de judô Antonio Pinheiro e sua esposa Nalva, Pai da Maria Isis, Rafael formou-se em Direito pela Universidade Iguaçu, Pós Graduou-se em Direito Tributário pela Escola da Magistratura do Estado do Rio de Janeiro (EMERJ) e Direito Desportivo pela Universidade Candido Mendes, inscrito na OAB/RJ com o nº 182.435, dedicando-se a atuar na área empresárial e tributária. </div>
+      </div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-photo">
+        <div class="adv-photo-placeholder">C</div>
+      </div>
+      <div class="adv-info">
+        <div class="adv-name">Dra. Camile Micho</div>
+        <div class="adv-oab">OAB/RJ &middot; Sócia-Fundadora</div>
+        <div class="adv-spec">Nascida em Nova Iguaçu no estado do Rio de Janeiro, filha do Contador Paulo Micho e da Psicologa Denize Micho, Mãe da Maria Isis, Camile formou-se  em Direito pela Universidade Federal do Estado do Rio de Janeiro (UFRJ), especializou-se em Direito Civil e Processo Civil pela Universidade Candido Mendes, Concursada e nomeada Defensora Pública no Estado do Espirito Santo, optou por advogar no setor privado mantendo suas raízes na cidade de Nova Iguaçu próximo da família, focando atuar na seara de família, sucessões e consumidor.  </div>
+      </div>
+    </div>
+    <div class="adv-card">
+      <div class="adv-photo">
+        <div class="adv-photo-placeholder">L</div>
+      </div>
+      <div class="adv-info">
+        <div class="adv-name">Dr. Luis Claudio Provadelli</div>
+        <div class="adv-oab">OAB/RJ &middot; Sócio-Fundador</div>
+        <div class="adv-spec">Nascido em São João de Meriti, casado com a Pedagoga Raquel Souza, Pai do Pedro e da Manuela, formou-se em Direito pela Universidade ABEU Centro Universitário, Pós Graduou-se em Direito do Trabalho e Processo do Trabalho pela Universidade Candido Mendes (UCAM), inscrito na OAB/RJ com o nº 161.621, dedicando-se a atuar na área Trabalhista e Previdenciária. </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTÍCIAS -->
+<section class="noticias reveal" id="noticias">
+  <div class="section-label">Conteúdo jurídico</div>
+  <h2>Notícias <em>&amp; Artigos</em></h2>
+  <div class="noticias-grid">
+    <div class="noticia-card">
+      <div class="noticia-bar"></div>
+      <div class="noticia-body">
+        <span class="noticia-tag">Previdenciário</span>
+        <div class="noticia-title">Novas regras do INSS para aposentadoria em 2025: o que mudou?</div>
+        <div class="noticia-excerpt">Entenda as alterações nos critérios de pontuação e tempo de contribuição e como isso afeta o seu planejamento previdenciário.</div>
+        <div class="noticia-date">Junho 2026</div>
+      </div>
+    </div>
+    <div class="noticia-card">
+      <div class="noticia-bar"></div>
+      <div class="noticia-body">
+        <span class="noticia-tag">Empresarial</span>
+        <div class="noticia-title">Holding familiar: proteção patrimonial e sucessória para sua empresa</div>
+        <div class="noticia-excerpt">A constituição de uma holding pode ser a melhor estratégia para preservar o patrimônio da família e evitar conflitos na herança.</div>
+        <div class="noticia-date">Maio 2026</div>
+      </div>
+    </div>
+    <div class="noticia-card">
+      <div class="noticia-bar"></div>
+      <div class="noticia-body">
+        <span class="noticia-tag">Consumidor</span>
+        <div class="noticia-title">Danos morais por negativação indevida: saiba como agir</div>
+        <div class="noticia-excerpt">Teve seu nome inscrito no SPC ou Serasa de forma incorreta? Você pode ter direito à indenização. Veja os passos para recorrer.</div>
+        <div class="noticia-date">Abril 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato reveal" id="contato">
+  <div class="contato-text">
+    <div class="section-label" style="color:var(--gold);">Fale conosco</div>
+    <h2>Agende sua <em>consulta</em></h2>
+    <p style="font-size:0.9rem;line-height:1.8;color:rgba(248,246,241,0.6);margin-top:1rem;">Estamos prontos para ouvir seu caso e indicar o melhor caminho jurídico. Entre em contato e agende uma consulta com um de nossos especialistas.</p>
+    <div class="contato-info">
+      <div class="contato-row">
+        <svg class="contato-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <div class="contato-label">Endereço</div>
+          <div class="contato-val">Rua Otávio Tarquino, 410, Sala 511<br>Centro, Nova Iguaçu — RJ<br>CEP 26210-172</div>
+        </div>
+      </div>
+      <div class="contato-row">
+        <svg class="contato-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 5.97 5.97l.52-.52a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+        <div>
+          <div class="contato-label">Telefone</div>
+          <div class="contato-val">(21) 3743-5347</div>
+        </div>
+      </div>
+      <div class="contato-row">
+        <svg class="contato-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div>
+          <div class="contato-label">E-mail</div>
+          <div class="contato-val">pinheiromicho@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contato-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" placeholder="Seu nome">
+      </div>
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="tel" placeholder="(21) 9 0000-0000">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" placeholder="seuemail@exemplo.com">
+    </div>
+    <div class="form-group">
+      <label>Área de interesse</label>
+      <select>
+        <option value="">Selecione uma área</option>
+        <option>Direito Empresarial</option>
+        <option>Civil e Consumidor</option>
+        <option>Direito Tributário</option>
+        <option>Família e Sucessões</option>
+        <option>Direito Previdenciário</option>
+        <option>Direito Trabalhista</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Descreva brevemente seu caso</label>
+      <textarea placeholder="Conte-nos sobre sua situação..."></textarea>
+    </div>
+    <button class="form-submit" type="button">Enviar mensagem →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="logopm.png">
+  </div>
+  <div class="footer-links">
+    <a href="#inicio">Início</a>
+    <a href="#nossa-historia">História</a>
+    <a href="#atuacao">Áreas</a>
+    <a href="#advogados">Advogados</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <div class="footer-copy">©2026 Pinheiro &amp; Micho Advocacia. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  // Header scroll behavior
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      header.classList.remove('at-top');
+      header.classList.add('scrolled');
+    } else {
+      header.classList.add('at-top');
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Form submit feedback
+  document.querySelector('.form-submit').addEventListener('click', function() {
+    this.textContent = 'Mensagem enviada ✓';
+    this.style.background = '#4CAF50';
+    setTimeout(() => {
+      this.textContent = 'Enviar mensagem →';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>
